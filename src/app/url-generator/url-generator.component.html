@@ -1,0 +1,26 @@
+<h2>Enter a URL to generate it's tiny URL</h2>
+
+<form [formGroup]="urlform" name="urlForm" id="urlForm" (ngSubmit)="generateShortUrl()">
+  <label for="search-box">Enter a long URL</label>
+  <input
+    id="search-box"
+    formControlName="longUrlInput"
+    name="longUrl"
+    type="text"
+    placeholder="e.g. www.google.com" />
+  <div *ngIf="urlInvalid">{{urlError}}</div>
+  <div>
+    <button
+      class="button is-primary"
+      type="submit"
+      form="urlForm"
+      [disabled]="!formHasChanged">
+      Submit
+    </button>
+  </div>
+</form>
+
+<div *ngIf="shortUrlGenerated">
+  <p>Hey try the below short url in your browser </p>
+  <p>{{ shortUrl }}</p>
+</div>
